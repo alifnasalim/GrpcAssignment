@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option csharp_namespace = "CouponServiceGrpc";
+
+import "google/api/annotations.proto";
+service Coupons{
+ rpc GetCoupon (GetCouponRequest) returns (GetCouponResponse){
+ option (google.api.http) = {
+   get : "/api/rest/coupon/{CouponCode}"
+  };
+ }
+}
+
+
+message GetCouponRequest{
+ string CouponCode = 1;
+}
+
+message GetCouponResponse{
+ string CouponId = 1;
+ string CouponCode = 2;
+ double DiscountAmount = 3;
+
+}
